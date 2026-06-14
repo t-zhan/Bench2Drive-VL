@@ -380,7 +380,7 @@ def generate_middleware_unit(raw_dict, no_tags, curr_anno):
 
 def generate_sharegpt_unit(raw_dict, no_tags, curr_anno):
     img_desc = "The two concatenated images below are from " +\
-               "all cameras attatched to the ego vehicle on current frame."
+               "all cameras attached to the ego vehicle on current frame."
     context_str = ""
     context_str += f"{img_desc}\n<image><image>"
 
@@ -419,7 +419,7 @@ def generate_sharegpt_unit(raw_dict, no_tags, curr_anno):
 
 def generate_sharegpt_CoT_unit(raw_dict, no_tags, curr_anno):
     img_desc = "The two concatenated images below are from " +\
-               "all cameras attatched to the ego vehicle on current frame."
+               "all cameras attached to the ego vehicle on current frame."
     context_str = ""
     context_str += f"{img_desc}\n<image><image>"
 

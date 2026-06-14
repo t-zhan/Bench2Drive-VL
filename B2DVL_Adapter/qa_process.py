@@ -23,7 +23,7 @@ def generate_condition(anno_path, qid, special_state_str=None):
         43, # Natural language description of future motion.
         50, # High-level command for navigation
     ]:
-        if qid in [42]:
+        if False:
             condition += "The ego vehicle is driving at the speed of " +\
                     f"{anno['speed']:.1f} m/s. "
         else:

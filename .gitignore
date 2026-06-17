@@ -227,3 +227,4 @@ output/
 .env
 .envrc
 processed_paths.txt
+carla/

@@ -222,3 +222,8 @@ configs/
 eval_v1/
 output/
 *docker.sh
+
+# Environments
+.env
+.envrc
+processed_paths.txt

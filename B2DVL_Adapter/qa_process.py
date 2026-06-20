@@ -36,7 +36,7 @@ def generate_condition(anno_path, qid, special_state_str=None):
 
             command_map = {
                         1: 'turn left at the intersection',
-                        2: 'turns right at the intersection',
+                        2: 'turn right at the intersection',
                         3: 'drive straight at the intersection',
                         4: 'follow the road',
                         5: f'do a lane change to the left',

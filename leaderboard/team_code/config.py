@@ -579,6 +579,7 @@ class GlobalConfig:
         if MINIMAL <= 0:
             with open(self.vlm_config_dir, 'r', encoding='utf-8') as f:
                 config_data = json.load(f)
+            self.vlm_config = config_data
     
             self.model_name = config_data['MODEL_NAME']
             self.model_path = config_data['MODEL_PATH']
@@ -602,6 +603,7 @@ class GlobalConfig:
             if self.vlm_config_dir is not None and os.path.exists(self.vlm_config_dir):
                 with open(self.vlm_config_dir, 'r', encoding='utf-8') as f:
                     config_data = json.load(f)
+                self.vlm_config = config_data
                 
                 if 'INFERENCE_BASICS' in config_data:
                     self.use_bev =  config_data['INFERENCE_BASICS'].get('USE_BEV', False)

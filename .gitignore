@@ -228,3 +228,4 @@ output/
 .envrc
 processed_paths.txt
 carla/
+leaderboard/data

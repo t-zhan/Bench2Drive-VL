@@ -15,13 +15,13 @@ from __future__ import print_function
 import traceback
 import argparse
 from argparse import RawTextHelpFormatter
-from distutils.version import LooseVersion
 import importlib
+from importlib_metadata import version as package_version
 import os
-import pkg_resources
 import sys
 import carla
 import signal
+from packaging.version import Version
 
 from srunner.scenariomanager.carla_data_provider import *
 from srunner.scenariomanager.timer import GameTime
@@ -117,10 +117,13 @@ class LeaderboardEvaluator(object):
         # Setup the simulation
         self.client, self.client_timeout, self.traffic_manager = self._setup_simulation(args)
 
-        dist = pkg_resources.get_distribution("carla")
-        if dist.version != 'leaderboard':
-            if LooseVersion(dist.version) < LooseVersion('0.9.10'):
-                raise ImportError("CARLA version 0.9.10.1 or newer required. CARLA version found: {}".format(dist))
+        carla_version = package_version("carla")
+        if carla_version != 'leaderboard':
+            if Version(carla_version) < Version('0.9.10'):
+                raise ImportError(
+                    "CARLA version 0.9.10.1 or newer required. "
+                    f"CARLA version found: {carla_version}"
+                )
 
         # Load agent
         module_name = os.path.basename(args.agent).split('.')[0]

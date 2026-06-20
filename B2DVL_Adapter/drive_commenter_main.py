@@ -97,9 +97,9 @@ def worker_task(worker_index, scenario_subset, args):
 if __name__ == '__main__':
     args = parse_arguments()
 
-    if os.path.exists(CACHE_DIR):
-        shutil.rmtree(CACHE_DIR)
-    os.makedirs(CACHE_DIR, exist_ok=True)
+    # if os.path.exists(CACHE_DIR):
+    #     shutil.rmtree(CACHE_DIR)
+    # os.makedirs(CACHE_DIR, exist_ok=True)
 
     do_subset = int(os.environ.get('SUBSET', 0))
     if do_subset:
@@ -125,7 +125,7 @@ if __name__ == '__main__':
 
     stats_list = []
     
-    with concurrent.futures.ThreadPoolExecutor(max_workers=worker_count) as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=worker_count) as executor:
         future_to_worker = {
             executor.submit(worker_task, i, scenario_splits[i], args): i for i in range(worker_count)
         }
@@ -165,7 +165,7 @@ if __name__ == '__main__':
         json.dump(stats_dict, f, indent=4)
     print("Stats saved.")
 
-    if os.path.exists(CACHE_DIR):
-        shutil.rmtree(CACHE_DIR)
+    # if os.path.exists(CACHE_DIR):
+    #     shutil.rmtree(CACHE_DIR)
     
     print("All vqas generated. Congrats! (  = w = )")

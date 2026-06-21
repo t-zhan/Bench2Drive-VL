@@ -1682,6 +1682,7 @@ def generate_ego_vehicle_actions(self, ego_vehicle_data, pedestrians, ego_data, 
                 relevant_objects = [v for v in vehicles_by_id.values() if v['base_type'] == 'bicycle' 
                                                                     and self.should_consider_vehicle(v) 
                                                                     and float(v['distance']) < change_lane_threshold
+                                                                    and v.get('lane_relative_to_ego') is not None
                                                                     and 0 <= v['lane_relative_to_ego'] <= 1]
                 if len(relevant_objects) == 1:
                     obstacle = f'bicycle({object_tags})'

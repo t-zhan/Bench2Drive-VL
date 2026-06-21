@@ -700,7 +700,7 @@ class QAsGenerator():
                 # print("analysing path") # debug
                 route_dir = '/'.join(path.split('/')[:-2])
                 scenario_name = route_dir.split('/')[-1]
-                town_name = route_dir.split('/')[-1].split('_')[1]
+                town_name = next(x for x in scenario_name.split('_') if x.startswith('Town'))
                 route_number = route_dir.split('/')[-1].split('_')[0] + '_' + route_dir.split('/')[-1].split('_')[1] + '_' + route_dir.split('/')[-1].split('_')[2]
 
                 self.current_measurement_path = path
@@ -710,7 +710,7 @@ class QAsGenerator():
                 # self.current_measurement_index = int(base_name)
                 
                 # print(f"[debug] path: {path}, route_dir: {route_dir}, scenario_name: {scenario_name}, town_name: {town_name}, route_number: {route_number}")
-                if self.map is None or (self.town_name is None or self.town_name is not town_name):
+                if self.map is None or (self.town_name is None or self.town_name != town_name):
                     self.town_name = town_name
                     if os.path.exists(os.path.join(self.map_file_dir, f'OpenDrive/{self.town_name}.xodr')):
                         with open(os.path.join(self.map_file_dir, f'OpenDrive/{self.town_name}.xodr'), 'r') as fp:

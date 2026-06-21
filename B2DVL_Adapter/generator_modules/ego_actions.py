@@ -970,11 +970,11 @@ def generate_ego_vehicle_actions(self, ego_vehicle_data, pedestrians, ego_data, 
 
             if leading_vehicle_id is not None:
                 leading_vehicle = vehicles[leading_vehicle_id]
+                color = get_vehicle_color(leading_vehicle)
+                vehicletype = get_vehicle_type(leading_vehicle)
+                rough_pos_str = get_rough_position(leading_vehicle)
                 considered_vehicle = self.should_consider_vehicle(leading_vehicle)
                 if considered_vehicle:
-                    color = get_vehicle_color(leading_vehicle)
-                    vehicletype = get_vehicle_type(leading_vehicle)
-                    rough_pos_str = get_rough_position(leading_vehicle)
                     # if measurements['speed'] < (1 / 3.6) * 0.9 * measurements['speed_limit'] \
                     #                                     and measurements['throttle'] < 0.9:
                     if True:

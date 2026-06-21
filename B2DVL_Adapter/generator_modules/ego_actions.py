@@ -991,7 +991,7 @@ def generate_ego_vehicle_actions(self, ego_vehicle_data, pedestrians, ego_data, 
                             final_stop_flag = False
                         elif leading_vehicle.get('speed', SLOW_VEHICLE_SPEED + 20.0) <= STOP_VEHICLE_SPEED:
                             if leading_vehicle.get('distance', 20.0) > STOP_FOR_STOPPED_VEHICLE_DISTANCE or \
-                               ('HighwayCutIn' in scenario_name and actor_hazard['id'] in self.front_merge_vehicle_ids):
+                               ('HighwayCutIn' in scenario_name and leading_vehicle['id'] in self.front_merge_vehicle_ids):
                                 answer = "The ego vehicle should slow down because the " +\
                                                                     f"{color}{vehicletype} that is {rough_pos_str}({object_tags}) is not moving."
                                 final_brake_flag = True
